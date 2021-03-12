@@ -1,4 +1,7 @@
+ 
 import { Component, OnInit } from '@angular/core';
+import { LoginViewModel } from '../login-view-model';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  login : LoginViewModel = new LoginViewModel();
+  thisMessage: any;
+  constructor(private loginservice: LoginService) {  
+  }
 
   ngOnInit(): void {
+    this.thisMessage = false;
+  }
+
+  onLoginClick (event){ 
+    return this.loginservice.Login(this.login).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error)=> {
+        console.log(error);
+      }
+    )
   }
 
 }

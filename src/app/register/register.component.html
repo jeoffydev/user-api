@@ -1,1 +1,31 @@
-<p>register works!</p>
+ 
+
+<div class="container"> 
+    <div class="row">
+        <div class="col-md-3">&nbsp;</div>
+        <div class="col-md-6">
+            <div class="alert" *ngIf="thisMessage">{{thisMessage}}</div>
+                <form>
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Full Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="rvm.FullName"  name="FullName" > 
+                              </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Username</label>
+                          <input type="text" class="form-control" [(ngModel)]="rvm.UserName"  name="UserName" > 
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" class="form-control" [(ngModel)]="rvm.Password"  name ="Password" >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Confirm Password</label>
+                            <input type="password" class="form-control"  [(ngModel)]="rvm.ConfirmPassword" name ="ConfirmPassword" >
+                          </div> 
+                        <button type="submit" class="btn btn-primary" (click)="onRegisterClick($event)">Submit</button>
+                    </form>
+
+        </div>
+        <div class="col-md-3">&nbsp;</div>
+    </div> 
+</div>

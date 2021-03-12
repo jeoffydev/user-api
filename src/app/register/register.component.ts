@@ -1,3 +1,5 @@
+import { RegisterService } from './../register.service';
+import { RegisterViewModel } from './../register-view-model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
-
+  rvm: RegisterViewModel = new RegisterViewModel(); 
+  thisMessage: any;
+  constructor(private registerService: RegisterService) { }
+  
+  
   ngOnInit(): void {
+    this.thisMessage = false;
+  }
+
+  onRegisterClick(event){ 
+    return this.registerService.Register(this.rvm).subscribe(
+      (response) => { 
+        console.log(response); 
+        this.thisMessage = "Thank you. Please login now";
+     },
+      (error) => { console.log(error); }
+    )
+
   }
 
 }
