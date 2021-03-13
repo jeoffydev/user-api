@@ -1,5 +1,6 @@
  
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginViewModel } from '../login-view-model';
 import { LoginService } from '../login.service';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   login : LoginViewModel = new LoginViewModel();
   thisMessage: any;
-  constructor(private loginservice: LoginService) {  
+  constructor(private loginservice: LoginService, private router: Router ) {  
   }
 
   ngOnInit(): void {
@@ -22,12 +23,19 @@ export class LoginComponent implements OnInit {
   onLoginClick (event){ 
     return this.loginservice.Login(this.login).subscribe(
       (response) => {
+        
+        
         console.log(response);
+        
+         
+        
       },
-      (error)=> {
-        console.log(error);
+      (error)=> { 
+         console.log(error);
       }
     )
   }
+
+   
 
 }

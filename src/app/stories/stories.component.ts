@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { Story } from '../story';
 import { StoryService } from '../story.service';
 
@@ -11,17 +12,14 @@ export class StoriesComponent implements OnInit {
 
   stories: Story[];
 
-  constructor(private storyservice : StoryService ) { }
+  constructor(private storyservice : StoryService, private route : Router ) { }
 
   ngOnInit(): void {
     this.storyservice.getAllStories().subscribe(
       (response : Story[]) => {
           console.log(response);
            this.stories = response;
-      },
-      (error) => {
-        console.log(error);
-      }
+      } 
     );
   }
    
@@ -30,8 +28,9 @@ export class StoriesComponent implements OnInit {
       (response : Story[]) => {
           this.stories = response;
       },
-      (error) => {
+      (error) => { 
         console.log(error);
+        
       }
     );
   }
