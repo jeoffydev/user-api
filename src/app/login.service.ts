@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class LoginService {
   private httpclient: HttpClient; 
   
 
-  constructor(private httpbackend : HttpBackend, private router: Router) { }
+  constructor(private httpbackend : HttpBackend, private router: Router, private jwthelperservice: JwtHelperService) { }
 
   public Login(logs: LoginViewModel): Observable<any>{ 
 
@@ -46,6 +47,17 @@ export class LoginService {
     this.thisUsername = null;
     sessionStorage.removeItem("currentUser");
     this.router.navigateByUrl("/login");  
+
+  }
+
+  public isAuthenticated() : boolean{
+     var token = sessionStorage.getItem("currentUser") ? JSON.parse(sessionStorage.getItem("currentUser")).token : null;
+     
+     if(this.jwthelperservice.isTokenExpired(token)){
+       return false;
+     }else{
+       return true;
+     }
 
   }
 

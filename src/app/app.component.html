@@ -10,16 +10,16 @@
         <a class="nav-link" routerLink="/">Home </a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/register">Register</a>
+        <a class="nav-link" routerLink="/register" *ngIf="!loginservice.thisUsername" >Register</a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/my-stories">My Stories</a>
+        <a class="nav-link" routerLink="/my-stories" *ngIf="loginservice.thisUsername">My Stories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/login" *ngIf="!loginservice.thisUsername">Login</a>
       </li>  
       <li class="nav-item">
-        <a class="nav-link"  href="#" (click)="loginservice.Logout()">Logout</a>
+        <a class="nav-link"  href="#" (click)="loginservice.Logout()" *ngIf="loginservice.thisUsername">Logout</a>
       </li> 
        
     </ul> 

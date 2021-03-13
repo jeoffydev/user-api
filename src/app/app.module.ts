@@ -10,7 +10,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { AuthorizationInterceptorService } from './authorization-interceptor.service';
-
+import {JwtModule} from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,16 @@ import { AuthorizationInterceptorService } from './authorization-interceptor.ser
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot(
+      { 
+        config: {
+          tokenGetter : () => { 
+            return (sessionStorage.getItem("currentUser") ? JSON.parse(sessionStorage.getItem("currentCurrent")).token : null);
+          } 
+        }
+      }
+    )
     
   ],
   providers: [
