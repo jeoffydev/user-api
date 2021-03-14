@@ -11,13 +11,15 @@ import {FormsModule} from '@angular/forms';
 import { JwtInterceptorService } from './jwt-interceptor.service';
 import { AuthorizationInterceptorService } from './authorization-interceptor.service';
 import {JwtModule} from '@auth0/angular-jwt';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    StoriesComponent
+    StoriesComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import {JwtModule} from '@auth0/angular-jwt';
       { 
         config: {
           tokenGetter : () => { 
-            return (sessionStorage.getItem("currentUser") ? JSON.parse(sessionStorage.getItem("currentCurrent")).token : null);
+            return (localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentCurrent")).token : null);
           } 
         }
       }

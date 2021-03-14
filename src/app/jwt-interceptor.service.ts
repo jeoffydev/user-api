@@ -18,8 +18,8 @@ export class JwtInterceptorService  implements HttpInterceptor{
   {
 
     var currentUser = {token : ""}; 
-    if(sessionStorage.currentUser != null){
-      currentUser = JSON.parse(sessionStorage.currentUser); 
+    if(localStorage.currentUser != null){
+      currentUser = JSON.parse(localStorage.currentUser); 
     }
 
     request = request.clone({

@@ -2,7 +2,11 @@
         <div class="row">
             <div class="col-md-3">&nbsp;</div>
             <div class="col-md-6">
-                <div class="text-danger" *ngIf="thisMessage">{{thisMessage}}</div>
+
+                    <div class="alert alert-danger" *ngIf="loginError">
+                            <span class="text-danger"   *ngFor ="let er of loginError">{{er}} <br /></span>
+                    </div>
+                    
                     <form>
                            
                             <div class="form-group">

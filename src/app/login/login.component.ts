@@ -13,26 +13,48 @@ export class LoginComponent implements OnInit {
 
   login : LoginViewModel = new LoginViewModel();
   thisMessage: any;
+  loginError: string = "";
+  errorArray: any = [];
+
   constructor(private loginservice: LoginService, private router: Router ) {  
   }
 
   ngOnInit(): void {
     this.thisMessage = false;
+    
+    if(this.loginservice.thisUsername != null){
+        this.router.navigateByUrl("/my-stories");
+    }
+
   }
 
   onLoginClick (event){ 
     return this.loginservice.Login(this.login).subscribe(
-      (response) => {
-        
-        
-        console.log(response);
-        
-         
-        
+      (response) => { 
+        this.router.navigateByUrl("/my-stories");
+        console.log(response);  
       },
-      (error)=> { 
+       (error) => {
          console.log(error);
-      }
+
+        var errorFinal = "";
+        this.errorArray = [];
+        
+        if(error.error.error){
+          errorFinal += error.error.error;
+          this.errorArray.push(error.error.error);
+        }
+        if(error.error.UserName){
+          errorFinal += error.error.UserName;
+          this.errorArray.push(error.error.UserName);
+        }
+        if(error.error.Password){
+          errorFinal += error.error.Password;
+          this.errorArray.push(error.error.Password);
+        }
+        console.log(this.errorArray);
+        this.loginError = this.errorArray;
+      },
     )
   }
 

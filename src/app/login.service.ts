@@ -16,12 +16,17 @@ export class LoginService {
   private httpclient: HttpClient; 
   
 
-  constructor(private httpbackend : HttpBackend, private router: Router, private jwthelperservice: JwtHelperService) { }
+  constructor(private httpbackend : HttpBackend, private router: Router, private jwthelperservice: JwtHelperService) { 
+
+ 
+  }
 
   public Login(logs: LoginViewModel): Observable<any>{ 
 
     this.httpclient = new HttpClient(this.httpbackend);
-    return this.httpclient.post<any>(this.thisApiUrl + "/api/login", logs, { responseType: "json" })
+    return this.httpclient.post<any>(this.thisApiUrl + "/api/login", logs)
+
+    /*
     .pipe(map(user => {  
 
       if(user.id != null){
@@ -35,23 +40,30 @@ export class LoginService {
         console.log(user);
         return user;
            
-      }
-     
-      
-      
+      } */
+
+      .pipe(map(response => {
+        console.log(response);
+        if (response)
+        {
+          this.thisUsername = response.userName;
+           
+          localStorage.currentUser = JSON.stringify(response); 
+        }
+        return response; 
         
     }));
   }
 
   public Logout(){
     this.thisUsername = null;
-    sessionStorage.removeItem("currentUser");
+    localStorage.removeItem("currentUser");
     this.router.navigateByUrl("/login");  
 
   }
 
   public isAuthenticated() : boolean{
-     var token = sessionStorage.getItem("currentUser") ? JSON.parse(sessionStorage.getItem("currentUser")).token : null;
+     var token = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null;
      
      if(this.jwthelperservice.isTokenExpired(token)){
        return false;

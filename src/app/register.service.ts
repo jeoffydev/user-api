@@ -19,9 +19,7 @@ export class RegisterService {
   public Register(rvm: RegisterViewModel): Observable<any>{
     console.log(rvm);
     return this.httpclient.post<any>(this.thisApiUrl + "/api/register", rvm, { responseType: "json" })
-    .pipe(map(reg => {  
-       return reg; 
-    }));
+     
   }
 
   

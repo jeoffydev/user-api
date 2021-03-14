@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
    *
    */
    
-  constructor(public loginservice: LoginService) {
-           
+  constructor(public loginservice: LoginService, private router : Router) {
+    
+    
   }
 }
