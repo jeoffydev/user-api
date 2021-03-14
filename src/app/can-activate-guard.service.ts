@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class CanActivateGuardService {
 
   constructor(private loginservice : LoginService, private router : Router) { }
 
-  canActivate(route:ActivatedRouteSnapshot) : boolean{
+ canActivate(router:ActivatedRouteSnapshot) : boolean{
     console.log("Eto canactivate");
     console.log(this.loginservice.isAuthenticated());
     if(this.loginservice.isAuthenticated()){
@@ -18,7 +18,10 @@ export class CanActivateGuardService {
       this.router.navigate(["login"]);
       return false;
     }
-  }
+  } 
+ 
+
+ 
 
 
 }

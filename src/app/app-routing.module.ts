@@ -4,11 +4,13 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { StoriesComponent } from './stories/stories.component';
 import { CanActivateGuardService } from './can-activate-guard.service';
+import { CanActivateLoginService } from './can-activate-login.service';
+import { CanActivateRegisterService } from './can-activate-register.service';
 
 const routes: Routes = [
   {path: "", component : LoginComponent, pathMatch: "full"},
-  {path: "register", component : RegisterComponent},
-  {path: "login", component : LoginComponent},
+  {path: "register", component : RegisterComponent },
+  {path: "login", component : LoginComponent },
   {path: "my-stories", component : StoriesComponent, canActivate: [CanActivateGuardService]}
 ];
 

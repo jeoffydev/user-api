@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
 
   rvm: RegisterViewModel = new RegisterViewModel(); 
   thisMessage: any;
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService,) { }
   
   
   ngOnInit(): void {
@@ -22,6 +22,10 @@ export class RegisterComponent implements OnInit {
     return this.registerService.Register(this.rvm).subscribe(
       (response) => { 
         console.log(response); 
+        this.rvm.FullName =null;
+        this.rvm.UserName = null;
+        this.rvm.Password = null;
+        this.rvm.ConfirmPassword = null;
         this.thisMessage = "Thank you. Please login now";
      },
       (error) => { console.log(error); }
