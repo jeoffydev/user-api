@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&family=Thasadith:wght@700&family=Ultra&display=swap');
+body{
+    font-family: 'Shippori Mincho B1', serif;
+    color:#43474c !important;
+    background-color: #EDD8C4 !important;
+}
+.logo{
+    font-family: 'Thasadith', sans-serif;
+    color: #fff!important;
+}
+.intro{
+    font-family: 'Ultra', serif;
+}
+.navbar.bg-light{
+    background-color: #CA5948 !important;
+}
+ 
+.navbar-light .navbar-nav a{
+    color:rgb(255, 191, 190) !important;
+}
+
+.navbar-nav li.is-active a{
+    color: #fff !important;
+}
+.body-wrapper{
+    padding: 6% 0px;
+}
+.btn.btn-primary{
+    background-color: #CA5948 !important;
+    border-color: #CA5948 !important;
+}

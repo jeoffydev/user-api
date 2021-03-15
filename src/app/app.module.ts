@@ -30,7 +30,7 @@ import { HomepageComponent } from './homepage/homepage.component';
       { 
         config: {
           tokenGetter : () => { 
-            return (localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentCurrent")).token : null);
+            return (localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null);
           } 
         }
       }

@@ -1,4 +1,6 @@
+import { StoryService } from './../story.service';
 import { Component, OnInit } from '@angular/core';
+import { Story } from '../story';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  AllStories : Story[];
+  constructor(private storiesservice : StoryService) { }
 
   ngOnInit(): void {
+
+    this.getStoriesService();
+
   }
+
+
+
+  getStoriesService(){
+    this.storiesservice.getAllStories().subscribe(
+      (response : Story[]) => {
+          this.AllStories  = response;
+      },
+      (error) => { 
+        console.log(error);
+        
+      }
+    );
+  }
+
+
+
 
 }

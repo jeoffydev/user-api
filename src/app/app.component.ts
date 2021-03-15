@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,12 @@ export class AppComponent {
    *
    */
    
-  constructor(public loginservice: LoginService, private router : Router) {
-    
+  constructor(public loginservice: LoginService, private router : Router, private titles: Title) {
+   
+    this.titles.setTitle('Kiwi Kids Stories');
     
   }
+   
+
+
 }

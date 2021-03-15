@@ -1,29 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand"  routerLink="/">Navbar</a>
+  <a class="navbar-brand logo"  routerLink="/">Kiwi Kid's Stories</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{ exact: true }" class="nav-item ">
         <a class="nav-link" routerLink="/">Home </a>
       </li> 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register" *ngIf="!loginservice.thisUsername" >Register</a>
-      </li> 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/my-stories" *ngIf="loginservice.thisUsername">My Stories</a>
-      </li>
-      <li class="nav-item">
+      <li [routerLinkActive]="'is-active'" class="nav-item">
         <a class="nav-link" routerLink="/login" *ngIf="!loginservice.thisUsername">Login</a>
       </li>  
-      <li class="nav-item">
+      <li [routerLinkActive]="'is-active'" class="nav-item">
+        <a class="nav-link" routerLink="/register" *ngIf="!loginservice.thisUsername" >Register</a>
+      </li> 
+      <li [routerLinkActive]="'is-active'" class="nav-item">
+        <a class="nav-link" routerLink="/my-stories" *ngIf="loginservice.thisUsername">My Stories</a>
+      </li>
+     
+      <li  class="nav-item">
         <a class="nav-link"  href="#" (click)="loginservice.Logout()" *ngIf="loginservice.thisUsername">Logout</a>
       </li> 
+
+      
        
     </ul> 
   </div>
 </nav>
-<h2 *ngIf="loginservice.thisUsername">{{loginservice.thisUsername}}</h2>
-<router-outlet></router-outlet>
+<h2 *ngIf="loginservice.thisUsername">{{loginservice.thisUsername}} / >{{loginservice.thisUsernameId}}</h2>
+
+<div class="body-wrapper">
+    <router-outlet></router-outlet>
+</div>

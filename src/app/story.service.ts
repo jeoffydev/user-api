@@ -29,4 +29,10 @@ export class StoryService {
 
       return this.httpclient.get<Story[]>(this.thisApiUrl + "/api/stories", {  responseType : "json"});
    }
+
+   getMyStories(userid : any) :Observable<Story[]>{ 
+      return this.httpclient.get<Story[]>(this.thisApiUrl + "/api/stories/" + userid, {  responseType : "json"});
+   }
+
+
 }

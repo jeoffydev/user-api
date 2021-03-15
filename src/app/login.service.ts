@@ -13,6 +13,7 @@ export class LoginService {
 
   thisApiUrl: any = 'http://localhost:43573';
   thisUsername : string;
+  thisUsernameId : string;
   private httpclient: HttpClient; 
   
 
@@ -47,7 +48,7 @@ export class LoginService {
         if (response)
         {
           this.thisUsername = response.userName;
-           
+          this.thisUsernameId = response.id; 
           localStorage.currentUser = JSON.stringify(response); 
         }
         return response; 
