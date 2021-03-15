@@ -14,7 +14,8 @@
     
                     <div class="alert alert-light" role="alert"  *ngFor="let story of AllStories">
                             <h1 class="display-4">{{story.title}}</h1>
-                            {{story.myStory}}
+                            <div [innerHTML]="story.myStory.slice(0, 85) + '...'"></div>
+                            
                     </div>    
     
             </div>

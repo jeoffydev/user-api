@@ -8,7 +8,7 @@
 
             <div class="jumbotron" *ngFor="let story of myStories">
                 <h1 class="display-4">{{story.title}}</h1>
-                {{story.myStory}}
+                <div [innerHTML]="story.myStory"></div>
             </div>
 
 

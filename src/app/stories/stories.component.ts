@@ -33,6 +33,7 @@ export class StoriesComponent implements OnInit {
   getStoriesService(){
     this.storyservice.getAllStories().subscribe(
       (response : Story[]) => {
+      
           this.stories = response;
       },
       (error) => { 
