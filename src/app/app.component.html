@@ -19,16 +19,16 @@
         <a class="nav-link" routerLink="/my-stories" *ngIf="loginservice.thisUsername">My Stories</a>
       </li>
      
-      <li  class="nav-item">
-        <a class="nav-link"  href="#" (click)="loginservice.Logout()" *ngIf="loginservice.thisUsername">Logout</a>
-      </li> 
-
-      
+     
        
     </ul> 
+
+    <span class="text-light form-inline my-2 my-lg-0" *ngIf="loginservice.thisUsername">
+       <span>Hi cutie {{loginservice.thisUsername}}! </span> &nbsp; |  &nbsp;  <a class="text-light"  href="#" (click)="loginservice.Logout()" *ngIf="loginservice.thisUsername"> Logout </a>
+    </span>
   </div>
 </nav>
-<h2 *ngIf="loginservice.thisUsername">{{loginservice.thisUsername}} / >{{loginservice.thisUsernameId}}</h2>
+<!--<h2 *ngIf="loginservice.thisUsername">{{loginservice.thisUsername}} / >{{loginservice.thisUsernameId}}</h2>-->
 
 <div class="body-wrapper">
     <router-outlet></router-outlet>

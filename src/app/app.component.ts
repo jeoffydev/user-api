@@ -13,13 +13,13 @@ export class AppComponent {
   /**
    *
    */
-   
+ 
   constructor(public loginservice: LoginService, private router : Router, private titles: Title) {
    
     this.titles.setTitle('Kiwi Kids Stories');
+   
     
   }
-   
-
+  
 
 }

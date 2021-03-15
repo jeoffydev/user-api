@@ -13,7 +13,7 @@ export class StoriesComponent implements OnInit {
 
   stories: Story[];
   myStories: Story[];
-
+  showEditor : boolean = false;
   constructor(private storyservice : StoryService, private route : Router, private loginservice : LoginService ) { }
 
   ngOnInit(): void {
@@ -25,9 +25,14 @@ export class StoriesComponent implements OnInit {
     ); */ 
     //Get my stories
     this.getMyStoriesService(this.loginservice.thisUsernameId);
-
+    this.showEditor = false;
      
     //console.log(localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null);
+  }
+
+  toggleEditor(){
+    this.showEditor = !this.showEditor;
+    console.log(this.showEditor);
   }
    
   getStoriesService(){
