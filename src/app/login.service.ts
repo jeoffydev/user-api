@@ -11,7 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginService {
 
-  thisApiUrl: any = 'http://localhost:43573';
+  thisApiUrl: any = '';
   thisUsername : string;
   thisUsernameId : string;
   private httpclient: HttpClient; 

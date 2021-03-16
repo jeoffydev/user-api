@@ -6,23 +6,50 @@
          </div>
      </div>
  </div>
-<div class="container margin-top">
+<div class="container-fluid margin-top">
     <div class="row">
         <div class="col-md-3" *ngIf="showEditor == false">&nbsp;</div>
-        <div class="col-md-6">
-           
+        <div   [ngClass]="showEditor == true? 'col-md-3' : 'col-md-6' "> 
 
             <div class="alert alert-light background-transparent-light nobroder"  *ngFor="let story of myStories">
                 <h1 >{{story.title}}</h1>
                 <div [innerHTML]="story.myStory"></div>
+                <p><small>Date Created: {{story.dateCreated | date:'medium'}} </small></p>
             </div>
 
 
         </div>
         <div class="col-md-3" *ngIf="showEditor == false">&nbsp;</div>
-        <div class="col-md-6" *ngIf="showEditor == true">
+        <div class="col-md-5" *ngIf="showEditor == true"> 
+                <div class="padding background-transparent">
+                    <h4>Preview:</h4>
+                    <h1>{{story.Title}}</h1>
+                    <div [innerHTML]="htmlView"></div>
+                   
+                </div>  
+        </div>
+        <div class="col-md-4" *ngIf="showEditor == true">
             <div class="padding background-transparent">
-                ********************** Form Editor here  ********************** 
+
+                <div class="alert alert-danger" *ngIf="loginError">
+                            <span class="text-danger"   *ngFor ="let er of loginError">{{er}} <br /></span>
+                </div>
+
+
+                <h3>I want to share my story!</h3>  
+                <form>
+                    <input type="hidden" class="form-control" id="InputUserId" [(ngModel)]="story.UserId" name="Id"    > 
+                    <div class="form-group">
+                      <label for="InputTitle">What is all about?</label>
+                      <input type="text" class="form-control" id="InputTitle" [(ngModel)]="story.Title" name="Title"  placeholder="My wonderful school"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="InputTitle">And this is my story for today.</label>
+                        <textarea [(ngModel)]="story.MyStory" class="form-control" (ngModelChange)="viewHtml($event)" name="MyStory"  rows="5" ></textarea> 
+                    </div>
+                     
+                    <button type="submit" class="btn btn-primary" (click)="postMyStory($event)">Submit</button>
+                  </form>
             </div>
         </div>
     </div>

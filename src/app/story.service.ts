@@ -9,7 +9,7 @@ import { Story } from './story';
 })
 export class StoryService {
 
-  thisApiUrl: any = 'http://localhost:43573';
+  thisApiUrl: any = '';
  
 
   constructor(private httpclient: HttpClient) { }
@@ -34,5 +34,9 @@ export class StoryService {
       return this.httpclient.get<Story[]>(this.thisApiUrl + "/api/stories/" + userid, {  responseType : "json"});
    }
 
+
+   writeMyStory(story: Story) : Observable<any>{
+      return this.httpclient.post<any>(this.thisApiUrl + "/api/stories", story, {  responseType : "json"});
+   }
 
 }

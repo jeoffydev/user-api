@@ -15,6 +15,7 @@
                     <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories">
                             <h3 >{{story.title}}</h3>
                             <div [innerHTML]="story.myStory.slice(0, 85) + '...'"></div>
+                            <p><small>Date Created: {{story.dateCreated | date:'medium'}} </small></p>
                             
                     </div>    
     
