@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegisterService {
 
-  thisApiUrl: any = '';
+  thisApiUrl: any = 'http://localhost:43573';
 
   constructor(private httpclient: HttpClient) { 
    

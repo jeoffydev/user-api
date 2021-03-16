@@ -9,7 +9,7 @@ import { Story } from './story';
 })
 export class StoryService {
 
-  thisApiUrl: any = '';
+  thisApiUrl: any = 'http://localhost:43573';
  
 
   constructor(private httpclient: HttpClient) { }
