@@ -11,8 +11,9 @@ export class CanActivateGuardService {
 
  canActivate(router:ActivatedRouteSnapshot) : boolean{
     console.log("Eto canactivate");
+    console.log(this.router.url);
     console.log(this.loginservice.isAuthenticated());
-    if(this.loginservice.isAuthenticated()){
+    if(this.loginservice.isAuthenticated()){ 
       return true;
     }else{
       this.router.navigate(["login"]);

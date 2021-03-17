@@ -1,8 +1,9 @@
 import { RegisterService } from './../register.service';
 import { RegisterViewModel } from './../register-view-model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { LoginService } from '../login.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,8 @@ export class RegisterComponent implements OnInit {
   thisMessage: any;
   errorArray: any = [];
   loginError: string = "";
+
+  @ViewChild("newForm") newForm: NgForm;
   constructor(private registerService: RegisterService, private loginservice: LoginService, private router: Router) { }
   
   

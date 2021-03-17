@@ -12,6 +12,7 @@ import { JwtInterceptorService } from './jwt-interceptor.service';
 import { AuthorizationInterceptorService } from './authorization-interceptor.service';
 import {JwtModule} from '@auth0/angular-jwt';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AgeValidatorDirective } from './age-validator.directive';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     LoginComponent,
     RegisterComponent,
     StoriesComponent,
-    HomepageComponent
+    HomepageComponent,
+    AgeValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     )
     
   ],
+  exports: [ AgeValidatorDirective ],
   providers: [
     {
       provide : HTTP_INTERCEPTORS, //Add here multiple interceptors

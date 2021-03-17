@@ -4,5 +4,6 @@ export class RegisterViewModel {
     UserName: string;
     Password: string;
     ConfirmPassword: string;
+    Age: number;
 
 }

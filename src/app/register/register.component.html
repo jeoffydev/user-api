@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-md-3">&nbsp;</div>
         <div class="col-md-6">
-            <div class="alert" *ngIf="thisMessage"> <a routerLink="/login" > {{thisMessage}} </a></div>
+            <div class="alert alert-success" *ngIf="thisMessage"> <a class="text-dark" routerLink="/login" > {{thisMessage}} </a></div>
             <div class="alert alert-danger" *ngIf="loginError">
                     <span class="text-danger"   *ngFor ="let er of loginError">{{er}} <br /></span>
             </div>
             
  
-                <form class="padding background-transparent">
+                <form class="padding background-transparent" #newForm="ngForm" novalidate="novalidate" appAgeValidator>
                         <div class="form-group">
                                 <label for="exampleInputEmail1">Full Name</label>
                                 <input type="text" class="form-control" [(ngModel)]="rvm.FullName" required   name="FullName" > 
@@ -20,6 +20,14 @@
                           <input type="text" class="form-control" [(ngModel)]="rvm.UserName" required  name="UserName" > 
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Age</label> 
+                            <select class="form-control" [(ngModel)]="rvm.Age" required="required"   name="Age" #newAge="ngModel"  > 
+                                    <option value="3" >Less than 4 years old  </option>
+                                    <option value="5" >Older than 4 years old  </option>
+                            </select>
+                            <span class="text-danger" *ngIf="newForm.invalid && (newForm.dirty || newForm.touched || newForm.submitted) && newForm.errors?.kidAge">Sorry, you cannot register if you are younger than 4 years old</span>
+                          </div> 
+                        <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
                           <input type="password" class="form-control" [(ngModel)]="rvm.Password" required   name ="Password" >
                         </div>
@@ -27,7 +35,7 @@
                             <label for="exampleInputPassword1">Confirm Password</label>
                             <input type="password" class="form-control" required    [(ngModel)]="rvm.ConfirmPassword" name ="ConfirmPassword" >
                           </div> 
-                        <button type="submit" class="btn btn-primary" (click)="onRegisterClick($event)">Submit</button>
+                        <button type="submit" class="btn btn-primary" (click)="onRegisterClick($event)" [disabled]="!rvm.Age || rvm.Age < 4">Submit</button>
                     </form>
 
         </div>

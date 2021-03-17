@@ -1,5 +1,5 @@
- 
- <div class="container-fluid">
+
+ <div class="container-fluid" *ngIf="thisUsername">
      <div class="row">
          <div class="col-md-12 text-center">
             <span class="btn  margin-left  btn-dark btn-sm"   (click)="toggleEditor()">Create your beautiful story now <i [ngClass]="showEditor == true? 'fa-minus' : 'fa-plus' " class="fa  "></i> </span>

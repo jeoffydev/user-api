@@ -18,7 +18,8 @@ export class StoriesComponent implements OnInit {
   htmlView: any;
   errorArray: any = [];
   loginError: string = "";
-
+  thisUsername : string;
+  thisUsernameId : string;
 
   constructor(private storyservice : StoryService, private route : Router, private loginservice : LoginService ) { }
 
@@ -34,6 +35,8 @@ export class StoriesComponent implements OnInit {
     this.getMyStoriesService(this.loginservice.thisUsernameId);
     this.showEditor = false;
     this.htmlView = null;
+    this.thisUsername = this.loginservice.thisUsername;;
+    this.thisUsernameId = this.loginservice.thisUsernameId; 
  
      
     //console.log(localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null);

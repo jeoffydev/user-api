@@ -65,10 +65,10 @@ export class LoginService {
 
   public isAuthenticated() : boolean{
      var token = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null;
-     
-     if(this.jwthelperservice.isTokenExpired(token)){
+   
+     if(this.jwthelperservice.isTokenExpired(token)){ 
        return false;
-     }else{
+     }else{ 
        return true;
      }
 

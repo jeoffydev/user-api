@@ -24,7 +24,7 @@ export class AuthorizationInterceptorService implements HttpInterceptor {
           {
             if (event instanceof HttpResponse)
             {
-              //do something with response
+              console.log("You're in!");
             }
           },
 
