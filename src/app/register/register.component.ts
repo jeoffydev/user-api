@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { LoginService } from '../login.service';
 import { NgForm } from '@angular/forms';
+import { User } from '../user';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
   thisMessage: any;
   errorArray: any = [];
   loginError: string = "";
+  userLog : User = new User();
 
   @ViewChild("newForm") newForm: NgForm;
   constructor(private registerService: RegisterService, private loginservice: LoginService, private router: Router) { }
@@ -23,7 +25,7 @@ export class RegisterComponent implements OnInit {
   
   ngOnInit(): void {
     this.thisMessage = false; 
-    if(this.loginservice.thisUsername != null){
+    if(this.loginservice.checkLogin() != null){ 
       this.router.navigateByUrl("/my-stories");
     }
 

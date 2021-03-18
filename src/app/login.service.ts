@@ -1,3 +1,4 @@
+import { User } from './user';
 import { LoginViewModel } from './login-view-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -15,6 +16,7 @@ export class LoginService {
   thisUsername : string;
   thisUsernameId : string;
   private httpclient: HttpClient; 
+  userLog : User = new User();
   
 
   constructor(private httpbackend : HttpBackend, private router: Router, private jwthelperservice: JwtHelperService) { 
@@ -44,11 +46,11 @@ export class LoginService {
       } */
 
       .pipe(map(response => {
-        console.log(response);
+        
         if (response)
         {
-          this.thisUsername = response.userName;
-          this.thisUsernameId = response.id; 
+         this.userLog.usernameLog  = response.userName;
+         this.userLog.useridLog = response.id; 
           localStorage.currentUser = JSON.stringify(response); 
         }
         return response; 
@@ -56,19 +58,33 @@ export class LoginService {
     }));
   }
 
+  public checkLogin(): any{ 
+    var userLogged = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")) : null;  
+    if(userLogged != null){  
+      var arrayLogged = {
+        "username": userLogged.userName,
+        "userid" : userLogged.id
+      } 
+      return arrayLogged;
+    }else{
+      return null;  
+    }
+     
+  }
+
   public Logout(){
     this.thisUsername = null;
     localStorage.removeItem("currentUser");
-    this.router.navigateByUrl("/login");  
+    //this.router.navigateByUrl("/login");  
+    window.location.href = "/"
 
   }
 
   public isAuthenticated() : boolean{
-     var token = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null;
-   
+     var token = localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null; 
      if(this.jwthelperservice.isTokenExpired(token)){ 
        return false;
-     }else{ 
+     }else{  
        return true;
      }
 

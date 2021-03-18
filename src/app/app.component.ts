@@ -1,3 +1,4 @@
+import { User } from './user';
 import { MainAppComponentService } from './main-app-component.service';
 import { Component } from '@angular/core';
 import { LoginService } from './login.service';
@@ -11,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class AppComponent {
   title = 'user-api'; 
+  userLog : User = new User();
   /**
    *
    */
@@ -19,7 +21,24 @@ export class AppComponent {
    
     this.titles.setTitle('Kiwi Kids Stories'); 
     
+     
   }
+
+  ngOnInit(): void {
+
+      
+
+      if(this.loginservice.checkLogin() != null){ 
+          var user = this.loginservice.checkLogin();  
+          this.userLog.usernameLog = user.username;
+          this.userLog.useridLog = user.userid;  
+      }
+
+   }
+   
+
+    //check if loggedin
+  
 
  
 }

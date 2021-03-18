@@ -1,3 +1,4 @@
+import { User } from './../user';
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { Story } from '../story';
@@ -20,6 +21,7 @@ export class StoriesComponent implements OnInit {
   loginError: string = "";
   thisUsername : string;
   thisUsernameId : string;
+  userLog : User = new User();
 
   constructor(private storyservice : StoryService, private route : Router, private loginservice : LoginService ) { }
 
@@ -30,17 +32,27 @@ export class StoriesComponent implements OnInit {
            this.stories = response;
       } 
     ); */ 
+
+    if(this.loginservice.checkLogin() != null){ 
+      var user = this.loginservice.checkLogin();  
+      this.userLog.usernameLog = user.username;
+      this.userLog.useridLog = user.userid;  
+    }
+    
+
     //Get my stories
-    this.story.UserId = this.loginservice.thisUsernameId;
-    this.getMyStoriesService(this.loginservice.thisUsernameId);
+    this.story.UserId = this.userLog.useridLog;
+    this.getMyStoriesService(this.userLog.useridLog);
     this.showEditor = false;
     this.htmlView = null;
-    this.thisUsername = this.loginservice.thisUsername;;
-    this.thisUsernameId = this.loginservice.thisUsernameId; 
- 
-     
+    
+   
+    
+    
     //console.log(localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null);
   }
+  
+ 
 
   toggleEditor(){
     this.showEditor = !this.showEditor;
@@ -50,7 +62,11 @@ export class StoriesComponent implements OnInit {
   getStoriesService(){
     this.storyservice.getAllStories().subscribe(
       (response : Story[]) => {
-        console.log(response);
+       
+        if(this.userLog.usernameLog == null){
+          this.route.navigateByUrl("/login");  
+        }
+        //console.log(response);
           this.stories = response;
       },
       (error) => { 
@@ -64,7 +80,7 @@ export class StoriesComponent implements OnInit {
   getMyStoriesService(userid : any){
     this.storyservice.getMyStories(userid).subscribe(
       (response : Story[]) => {
-        console.log(response);
+        //console.log(response);
           this.myStories = response;
       },
       (error) => { 
@@ -91,7 +107,7 @@ export class StoriesComponent implements OnInit {
         this.htmlView = null;
         this.showEditor = false;
         this.loginError = "";
-        this.getMyStoriesService(this.loginservice.thisUsernameId);
+        this.getMyStoriesService(this.userLog.useridLog);
       },
       (error) => { 
         console.log(error.error.error.Title.errors[0].errorMessage);

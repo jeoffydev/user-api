@@ -1,3 +1,4 @@
+import { User } from './../user';
  
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   thisMessage: any;
   loginError: string = "";
   errorArray: any = [];
+  userLog : User = new User();
 
   constructor(private loginservice: LoginService, private router: Router ) {  
   }
@@ -22,16 +24,20 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.thisMessage = false;
     
-    if(this.loginservice.thisUsername != null){
-        this.router.navigateByUrl("/my-stories");
+    if(this.loginservice.checkLogin() != null){ 
+      this.router.navigateByUrl("/my-stories");
     }
 
   }
 
+
+
   onLoginClick (event){ 
     return this.loginservice.Login(this.login).subscribe(
       (response) => { 
-        this.router.navigateByUrl("/my-stories");
+        //this.router.navigateByUrl("/my-stories");
+        window.location.reload();
+
         console.log(response);  
       },
        (error) => {

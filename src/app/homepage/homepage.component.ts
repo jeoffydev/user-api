@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
   getStoriesService(){
     this.storiesservice.getAllStories().subscribe(
       (response : Story[]) => {
-        console.log(response);
+        //console.log(response);
           this.AllStories  = response;
       },
       (error) => { 

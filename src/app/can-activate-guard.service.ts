@@ -9,10 +9,7 @@ export class CanActivateGuardService {
 
   constructor(private loginservice : LoginService, private router : Router) { }
 
- canActivate(router:ActivatedRouteSnapshot) : boolean{
-    console.log("Eto canactivate");
-    console.log(this.router.url);
-    console.log(this.loginservice.isAuthenticated());
+ canActivate(router:ActivatedRouteSnapshot) : boolean{ 
     if(this.loginservice.isAuthenticated()){ 
       return true;
     }else{
