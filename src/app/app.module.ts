@@ -13,6 +13,7 @@ import { AuthorizationInterceptorService } from './authorization-interceptor.ser
 import {JwtModule} from '@auth0/angular-jwt';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AgeValidatorDirective } from './age-validator.directive';
+import { AngularEditorModule } from '@kolkov/angular-editor'; 
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AgeValidatorDirective } from './age-validator.directive';
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
-    FormsModule,
+    FormsModule, 
+    AngularEditorModule,
     JwtModule.forRoot(
       { 
         config: {

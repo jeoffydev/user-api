@@ -4,6 +4,8 @@ import {  Router } from '@angular/router';
 import { Story } from '../story';
 import { StoryService } from '../story.service';
 import { LoginService } from '../login.service';
+import { Editor } from 'ngx-editor';
+import { toHTML } from 'ngx-editor';
 
 @Component({
   selector: 'app-stories',
@@ -22,6 +24,10 @@ export class StoriesComponent implements OnInit {
   thisUsername : string;
   thisUsernameId : string;
   userLog : User = new User();
+
+  //TExt editor
+  editor: Editor;
+  html: '';
 
   constructor(private storyservice : StoryService, private route : Router, private loginservice : LoginService ) { }
 
@@ -45,11 +51,18 @@ export class StoriesComponent implements OnInit {
     this.getMyStoriesService(this.userLog.useridLog);
     this.showEditor = false;
     this.htmlView = null;
+
+    //Text editor
+    this.editor = new Editor();
     
    
     
     
     //console.log(localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null);
+  }
+
+  ngOnDestroy(): void {
+    this.editor.destroy();
   }
   
  
@@ -90,8 +103,7 @@ export class StoriesComponent implements OnInit {
     );
   }
 
-  viewHtml(event){
-    console.log(this.story.MyStory);
+  viewHtml(event ){ 
     this.htmlView = this.story.MyStory;
   }
 
