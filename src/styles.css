@@ -55,3 +55,28 @@ body{
 .margin-top{
     margin-top: 20px;
 }
+.angular-editor-toolbar-set #strikeThrough-, 
+.angular-editor-toolbar-set #subscript-,
+.angular-editor-toolbar-set #superscript-,
+.angular-editor-toolbar-set #justifyLeft-,
+.angular-editor-toolbar-set #justifyCenter-,
+.angular-editor-toolbar-set #justifyRight-,
+.angular-editor-toolbar-set #justifyFull-,
+.angular-editor-toolbar-set #indent-,
+.angular-editor-toolbar-set #outdent-,
+
+.angular-editor-toolbar-set .select-font,
+.angular-editor-toolbar-set #backgroundColorPicker-,
+.angular-editor-toolbar-set #link-,
+.angular-editor-toolbar-set #unlink-,
+.angular-editor-toolbar-set #insertImage-,
+.angular-editor-toolbar-set #insertVideo-,
+.angular-editor-toolbar-set #clearFormatting-,
+.angular-editor-toolbar-set #insertHorizontalRule-,
+.angular-editor-toolbar-set #toggleEditorMode-
+{
+    display:none !important;
+}
+.angular-editor{
+    background-color: #fff;
+}

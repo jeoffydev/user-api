@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
   /**
    *
    */
+ 
  
   constructor(public loginservice: LoginService, private router : Router, private titles: Title, private appservices : MainAppComponentService) {
    
