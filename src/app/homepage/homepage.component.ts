@@ -13,6 +13,7 @@ export class HomepageComponent implements OnInit {
 
   AllStories : Story[];
   userLog : User = new User();
+  p: number = 1;
 
   constructor(private storiesservice : StoryService, private loginservice : LoginService) { }
 

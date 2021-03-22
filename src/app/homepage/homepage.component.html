@@ -10,19 +10,20 @@
 <div class="container-fluid">
     <div class="row">
            
-            <div class="col-md-4">
-    
-                    <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories">
+            <div class="col-md-5">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>  
+                    <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories | paginate: { itemsPerPage: 20, currentPage: p }">
                             <h3 >{{story.title}}</h3>
                             <div *ngIf="!userLog.usernameLog" [innerHTML]="story.myStory.slice(0, 85) + '...'"></div>
                             <p><a  routerLink="/login" *ngIf="!userLog.usernameLog">Read more</a></p>
                             <div *ngIf="userLog.usernameLog" [innerHTML]="story.myStory"></div>
                             <p><small>Author: {{story.applicationUser.fullName}}  <br /> Date Created: {{story.dateCreated | date:'medium'}} </small></p>
                             
-                    </div>    
+                    </div>  
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>  
     
             </div>
-            <div class="col-md-8">&nbsp;</div>
+            <div class="col-md-7">&nbsp;</div>
      </div>
         
 </div>

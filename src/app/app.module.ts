@@ -14,6 +14,7 @@ import {JwtModule} from '@auth0/angular-jwt';
 import { HomepageComponent } from './homepage/homepage.component';
 import { AgeValidatorDirective } from './age-validator.directive';
 import { AngularEditorModule } from '@kolkov/angular-editor'; 
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     HttpClientModule,
     FormsModule, 
     AngularEditorModule,
+    NgxPaginationModule,
     JwtModule.forRoot(
       { 
         config: {

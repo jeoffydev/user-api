@@ -11,6 +11,9 @@ body{
     -o-background-size: cover;
     background-size: cover;
 }
+a{
+    color:#CA5948 !important;
+}
 .logo{
     font-family: 'Thasadith', sans-serif;
     color: #fff!important;
@@ -79,4 +82,11 @@ body{
 }
 .angular-editor{
     background-color: #fff;
+}
+.ngx-pagination{
+    margin:0px;
+    padding:0px;
+}
+.ngx-pagination .disabled {
+   display: none;
 }
