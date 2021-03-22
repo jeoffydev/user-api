@@ -5,7 +5,7 @@
         </div>
     </div>
 </div> 
- 
+
 
 <div class="container-fluid">
     <div class="row">
@@ -14,8 +14,10 @@
     
                     <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories">
                             <h3 >{{story.title}}</h3>
-                            <div [innerHTML]="story.myStory.slice(0, 85) + '...'"></div>
-                            <p><small>Date Created: {{story.dateCreated | date:'medium'}} </small></p>
+                            <div *ngIf="!userLog.usernameLog" [innerHTML]="story.myStory.slice(0, 85) + '...'"></div>
+                            <p><a  routerLink="/login" *ngIf="!userLog.usernameLog">Read more</a></p>
+                            <div *ngIf="userLog.usernameLog" [innerHTML]="story.myStory"></div>
+                            <p><small>Author: {{story.applicationUser.fullName}}  <br /> Date Created: {{story.dateCreated | date:'medium'}} </small></p>
                             
                     </div>    
     

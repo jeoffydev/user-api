@@ -5,5 +5,6 @@ export class Story {
     Title: string;
     BackgroundColour: string;
     UserId: string; 
-    DateCreated: any
+    DateCreated: any;
+    ApplicationUser: any;
 }
