@@ -32,6 +32,10 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  makeLowerCase(val){
+     this.rvm.UserName = val.toLowerCase().replace(/[$&%#@!*^`~,.<>;':"\/\[\]\|{}()=_+-]/g,'');
+  }
+
   onRegisterClick(event){ 
     return this.registerService.Register(this.rvm).subscribe(
     

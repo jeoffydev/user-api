@@ -17,7 +17,7 @@
                               </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Username</label>
-                          <input type="text" class="form-control" [(ngModel)]="rvm.UserName" required  name="UserName" > 
+                          <input type="text" class="form-control" [(ngModel)]="rvm.UserName" required id="username"  name="UserName" (change)="makeLowerCase(rvm.UserName)"   (keydown.space)="$event.preventDefault()" > 
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Age</label> 
