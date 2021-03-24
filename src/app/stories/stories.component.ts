@@ -23,7 +23,10 @@ export class StoriesComponent implements OnInit {
   thisUsername : string;
   thisUsernameId : string;
   userLog : User = new User();
- 
+  p: number = 1;
+  searchStory: string;
+  googlefontSelect: any = [];
+  
 
   //TExt editor 
 
@@ -52,7 +55,8 @@ export class StoriesComponent implements OnInit {
 
     //Text editor 
     
-   
+    //GoogleFonts
+    this.getGoogleFontService();
     
     
     //console.log(localStorage.getItem("currentUser") ? JSON.parse(localStorage.getItem("currentUser")).token : null);
@@ -64,6 +68,22 @@ export class StoriesComponent implements OnInit {
   toggleEditor(){
     this.showEditor = !this.showEditor;
     console.log(this.showEditor);
+  }
+
+  getGoogleFontService(){
+    this.storyservice.getGoogleFonts().subscribe(
+      (response : any) => {
+        console.log("Google fonts");
+        this.story.GoogleFontsId = 0;
+        this.googlefontSelect = response;
+        
+         
+      },
+      (error) => { 
+        console.log(error);
+        
+      }
+    );
   }
    
   getStoriesService(){
@@ -87,7 +107,7 @@ export class StoriesComponent implements OnInit {
   getMyStoriesService(userid : any){
     this.storyservice.getMyStories(userid).subscribe(
       (response : Story[]) => {
-        //console.log(response);
+         //console.log(response);
           this.myStories = response;
       },
       (error) => { 
@@ -108,7 +128,7 @@ export class StoriesComponent implements OnInit {
         console.log(response);
         this.story.Title = null;
         this.story.MyStory = null;
-        this.story.FontAwesome = null;
+        this.story.GoogleFontsId = 0;
         this.story.BackgroundColour = null;
         this.htmlView = null;
         this.showEditor = false;

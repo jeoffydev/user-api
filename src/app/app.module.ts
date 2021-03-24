@@ -15,6 +15,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AgeValidatorDirective } from './age-validator.directive';
 import { AngularEditorModule } from '@kolkov/angular-editor'; 
 import {NgxPaginationModule} from 'ngx-pagination'; 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule, 
     AngularEditorModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     JwtModule.forRoot(
       { 
         config: {

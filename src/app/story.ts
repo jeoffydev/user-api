@@ -1,7 +1,8 @@
 export class Story {
     Id: number;
     MyStory: any;
-    FontAwesome: any;
+    GoogleFont: any;
+    GoogleFontsId: number;
     Title: string;
     BackgroundColour: string;
     UserId: string; 

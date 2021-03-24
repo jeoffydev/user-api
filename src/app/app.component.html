@@ -24,9 +24,9 @@
      
        
     </ul> 
-
+     
     <span class="text-light form-inline my-2 my-lg-0" *ngIf="userLog.usernameLog">
-       <span>Hi cutie {{loginservice.thisUsername}}! </span> &nbsp; |  &nbsp;  <a class="text-light"  href="#" (click)="loginservice.Logout()" *ngIf="userLog.usernameLog"> Logout </a>
+       <span>Hi cutie {{userLog.usernameLog}}! </span> &nbsp; |  &nbsp;  <a class="text-light"  href="#" (click)="loginservice.Logout()" *ngIf="userLog.usernameLog"> Logout </a>
     </span>
   </div>
 </nav>

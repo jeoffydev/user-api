@@ -8,22 +8,34 @@
 
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" *ngIf="AllStories">
            
-            <div class="col-md-5">
+            <div class="col-md-7">
+                    <p *ngIf="userLog.usernameLog" ><input type="text" [(ngModel)]="searchStory" class="form-control searchform" placeholder="Search Stories"></p>
                     <pagination-controls (pageChange)="p = $event"></pagination-controls>  
-                    <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories | paginate: { itemsPerPage: 20, currentPage: p }">
-                            <h3 >{{story.title}}</h3>
-                            <div *ngIf="!userLog.usernameLog" [innerHTML]="story.myStory.slice(0, 85) + '...'"></div>
-                            <p><a  routerLink="/login" *ngIf="!userLog.usernameLog">Read more</a></p>
-                            <div *ngIf="userLog.usernameLog" [innerHTML]="story.myStory"></div>
+                    <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories | filter:searchStory | paginate: { itemsPerPage: 20, currentPage: p }" >
+                           
+                            <svg style="display:none">
+                                <style>
+                                    @import url('{{story.googleFont.importUrl}}');
+                                </style>
+                            </svg>
+                              
+                            <div class="thisgooglefont" style='{{story.googleFont.importName}} ' > 
+                                
+                                <h3  >{{story.title}}</h3>
+                                <div   *ngIf="!userLog.usernameLog" [innerHTML]="story.myStory.slice(0, 85) + '...'"></div>
+                                <p  ><a  routerLink="/login" *ngIf="!userLog.usernameLog">Read more</a></p>
+                                <div  *ngIf="userLog.usernameLog" [innerHTML]="story.myStory"></div>
+                            </div>
+                           
                             <p><small>Author: {{story.applicationUser.fullName}}  <br /> Date Created: {{story.dateCreated | date:'medium'}} </small></p>
                             
                     </div>  
                     <pagination-controls (pageChange)="p = $event"></pagination-controls>  
     
             </div>
-            <div class="col-md-7">&nbsp;</div>
+            <div class="col-md-5">&nbsp;</div>
      </div>
         
 </div>

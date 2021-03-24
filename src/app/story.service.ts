@@ -39,4 +39,8 @@ export class StoryService {
       return this.httpclient.post<any>(this.thisApiUrl + "/api/stories", story, {  responseType : "json"});
    }
 
+   getGoogleFonts() :Observable<any>{ 
+    return this.httpclient.get<any>(this.thisApiUrl + "/api/googlefonts",  {  responseType : "json"});
+   }
+
 }

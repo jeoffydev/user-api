@@ -13,7 +13,8 @@ export class HomepageComponent implements OnInit {
 
   AllStories : Story[];
   userLog : User = new User();
-  p: number = 1;
+  p: number = 1; 
+  searchStory: string;
 
   constructor(private storiesservice : StoryService, private loginservice : LoginService) { }
 
@@ -34,7 +35,7 @@ export class HomepageComponent implements OnInit {
   getStoriesService(){
     this.storiesservice.getAllStories().subscribe(
       (response : Story[]) => {
-       // console.log(response);
+         console.log(response);
           this.AllStories  = response;
       },
       (error) => { 

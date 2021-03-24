@@ -14,6 +14,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 export class AppComponent {
   title = 'user-api'; 
   userLog : User = new User();
+  searchStory: string;
   /**
    *
    */
