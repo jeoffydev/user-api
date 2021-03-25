@@ -11,10 +11,21 @@
         
         <div class="col-md-2" *ngIf="showEditor == false">&nbsp;</div>
         <div class="col-md-6" *ngIf="showEditor == true"> 
-                <div class="padding background-transparent">
-                    <h4>Preview:</h4>
-                    <h1>{{story.Title}}</h1>
-                    <div [innerHTML]="htmlView"></div>
+                <div class="padding background-transparent" >
+                    
+                    <h4>Preview:   </h4>
+
+                    <svg style="display:none">
+                        <style>
+                            @import url('{{fontEmbed}}');
+                        </style>
+                    </svg>
+                     
+                    <div class="googleFont" style='{{fontFamily}} '>
+                        <h1>{{story.Title}}</h1>
+                        <div [innerHTML]="htmlView"></div>
+                    </div>
+                   
                    
                 </div>  
         </div>
@@ -43,7 +54,7 @@
 
                     <div class="form-group">
                         <label for="InputTitle">Font Style</label> 
-                        <select [(ngModel)]="story.GoogleFontsId"  name="GoogleFont" class="form-control" >
+                        <select [(ngModel)]="story.GoogleFontsId" (change)="getFont(story.GoogleFontsId)" name="GoogleFont" class="form-control" >
                             <option [ngValue]="0" selected>--Choose font--</option>
                             <option  *ngFor ="let gf of googlefontSelect" [ngValue]="gf.id" > {{gf.importName}}</option>
                         </select>

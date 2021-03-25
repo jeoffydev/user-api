@@ -26,6 +26,8 @@ export class StoriesComponent implements OnInit {
   p: number = 1;
   searchStory: string;
   googlefontSelect: any = [];
+  fontFamily: string = null;
+  fontEmbed: string  = null;
   
 
   //TExt editor 
@@ -73,7 +75,7 @@ export class StoriesComponent implements OnInit {
   getGoogleFontService(){
     this.storyservice.getGoogleFonts().subscribe(
       (response : any) => {
-        console.log("Google fonts");
+        //console.log("Google fonts");
         this.story.GoogleFontsId = 0;
         this.googlefontSelect = response;
         
@@ -84,6 +86,18 @@ export class StoriesComponent implements OnInit {
         
       }
     );
+  }
+
+  getFont(id){
+    //console.log(id);
+    //console.log(this.googlefontSelect);
+    for(let i = 0; i < this.googlefontSelect.length; i++){ 
+      if(id == this.googlefontSelect[i].id){
+       //console.log(this.googlefontSelect[i]); 
+        this.fontFamily = this.googlefontSelect[i].importName;
+        this.fontEmbed = this.googlefontSelect[i].importUrl;
+      }
+    }
   }
    
   getStoriesService(){

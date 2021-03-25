@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
         this.rvm.Password = null;
         this.rvm.ConfirmPassword = null;
         this.thisMessage = "Thank you. Please login now";
+        
       },
        (error) => {
          console.log(error);
