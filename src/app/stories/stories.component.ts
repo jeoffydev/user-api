@@ -107,7 +107,7 @@ export class StoriesComponent implements OnInit {
         if(this.userLog.usernameLog == null){
           this.route.navigateByUrl("/login");  
         }
-        //console.log(response);
+         console.log(response);
           this.stories = response;
       },
       (error) => { 

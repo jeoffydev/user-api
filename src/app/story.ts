@@ -8,4 +8,5 @@ export class Story {
     UserId: string; 
     DateCreated: any;
     ApplicationUser: any;
+    Loves: any[];
 }
