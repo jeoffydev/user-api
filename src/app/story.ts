@@ -9,4 +9,5 @@ export class Story {
     DateCreated: any;
     ApplicationUser: any;
     Loves: any[];
+    lovedDone : boolean;
 }

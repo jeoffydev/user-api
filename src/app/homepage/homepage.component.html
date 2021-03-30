@@ -31,6 +31,14 @@
                            
                             <p><small>Author: {{story.applicationUser.fullName}}  <br /> Date Created: {{story.dateCreated | date:'medium'}} </small></p>
                             
+                            <p class="loved" *ngIf="userLog.usernameLog" >
+                                <span class="loveme">
+                                <i class="fa fa-heart" *ngIf="!story.lovedDone" (click)="LoveThisStory($event, userLog.useridLog, story.id)" ></i> 
+                                 <i class="fa fa-heart active" *ngIf="story.lovedDone" (click)="UnLoveThisStory($event, userLog.useridLog, story.id)"></i>
+                                </span>
+                                
+                                <small *ngIf="story.loves.length > 0" (click)="GetAllLoved(story.loves)" data-toggle="modal" data-target="#lovedModal">{{story.loves.length}} loved this</small>
+                            </p>
                     </div>  
                     <pagination-controls (pageChange)="p = $event"></pagination-controls>  
     
@@ -40,3 +48,21 @@
         
 </div>
     
+<!-- Modal -->
+<div class="modal fade" id="lovedModal" tabindex="-1" role="dialog" aria-labelledby="lovedModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+           <small>The following kids loved this story:</small>
+            <ul class="list-loved">
+                <li *ngFor="let sl of storyLoved"><i class="fa fa-heart text-danger"></i> {{sl.applicationUser.userName}}</li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>

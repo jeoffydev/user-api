@@ -15,7 +15,7 @@ export class HomepageComponent implements OnInit {
   userLog : User = new User();
   p: number = 1; 
   searchStory: string;
-
+  storyLoved : any[];
   constructor(private storiesservice : StoryService, private loginservice : LoginService) { }
 
   ngOnInit(): void {
@@ -30,13 +30,43 @@ export class HomepageComponent implements OnInit {
 
   }
 
+  LoveThisStory(event, userid, storyid){
+    console.log(userid + "/" + storyid);
+  }
+  UnLoveThisStory(event, userid, storyid){
+    console.log(userid + "/" + storyid);
+  }
 
+  GetAllLoved(model){
+    this.storyLoved = model;
+  }
 
   getStoriesService(){
     this.storiesservice.getAllStories().subscribe(
       (response : Story[]) => {
-         console.log(response);
+         //
           this.AllStories  = response;
+          if (response)
+          {
+            console.log("WAAH");
+             
+            if(this.userLog.useridLog != null && this.userLog.usernameLog != null){
+              for(let i = 0; i < response.length; i++){
+                let loveArray = response[i]['loves'];
+                //console.log(loveArray);
+                for(let ii = 0; ii < loveArray.length; ii++){
+                  console.log(loveArray[ii]['userId'])
+                  if(loveArray[ii]['userId'] == this.userLog.useridLog){
+                      response[i]['lovedDone'] = true;
+                  }
+                }
+              }
+            }
+            
+          }
+
+          console.log(response);
+          
       },
       (error) => { 
         console.log(error);

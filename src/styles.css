@@ -104,3 +104,34 @@ a{
 .searchform{ 
     border: 1px solid #979797  !important; 
 }
+.loveme{
+    position: relative;
+    top:10%;
+    cursor: pointer;
+    
+}
+.loveme i{
+    color: #37393b;
+    font-size: 20px;
+}
+.loved small{
+    display: inline-block;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.loveme i.hide{
+    opacity: 0; 
+    display: none;
+}
+.loveme i.active{
+    color: #CA5948; 
+}
+ul.list-loved{
+    padding: 0px;
+    margin: 0px;
+}
+ul.list-loved li{
+    list-style-type: none;
+    padding: 0px;
+
+}

@@ -28,6 +28,8 @@ export class StoryService {
         //JWT For Angular
 
       return this.httpclient.get<Story[]>(this.thisApiUrl + "/api/stories", {  responseType : "json"});
+      
+      
    }
 
    getMyStories(userid : any) :Observable<Story[]>{ 
