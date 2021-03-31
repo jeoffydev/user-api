@@ -32,9 +32,35 @@ export class HomepageComponent implements OnInit {
 
   LoveThisStory(event, userid, storyid){
     console.log(userid + "/" + storyid);
+    this.storiesservice.LoveThisStory(userid, storyid).subscribe(
+      (response : string) => {
+       
+        if(response['message'] == "success"){ 
+          this.getStoriesService();
+        }
+        
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+    
   }
   UnLoveThisStory(event, userid, storyid){
-    console.log(userid + "/" + storyid);
+    
+    this.storiesservice.UnLoveThisStory(userid, storyid).subscribe(
+      (response : string) => {
+       
+        if(response['message'] == "success"){ 
+          this.getStoriesService();
+        }
+        
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+
   }
 
   GetAllLoved(model){
@@ -48,7 +74,7 @@ export class HomepageComponent implements OnInit {
           this.AllStories  = response;
           if (response)
           {
-            console.log("WAAH");
+            
              
             if(this.userLog.useridLog != null && this.userLog.usernameLog != null){
               for(let i = 0; i < response.length; i++){
@@ -65,7 +91,7 @@ export class HomepageComponent implements OnInit {
             
           }
 
-          console.log(response);
+          
           
       },
       (error) => { 

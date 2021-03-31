@@ -45,4 +45,12 @@ export class StoryService {
     return this.httpclient.get<any>(this.thisApiUrl + "/api/googlefonts",  {  responseType : "json"});
    }
 
+   LoveThisStory(userid : any, storyid: number) :Observable<string>{ 
+    return this.httpclient.get<string>(this.thisApiUrl + "/api/love/" + userid + "/" + storyid, {  responseType : "json"});
+  }
+
+  UnLoveThisStory(userid : any, storyid: number) :Observable<string>{ 
+    return this.httpclient.get<string>(this.thisApiUrl + "/api/lovedelete/" + userid + "/" + storyid, {  responseType : "json"});
+  }
+
 }
