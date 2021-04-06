@@ -28,7 +28,7 @@ export class StoriesComponent implements OnInit {
   googlefontSelect: any = [];
   fontFamily: string = null;
   fontEmbed: string  = null;
-  
+  editForm : Story;
 
   //TExt editor 
 
@@ -131,8 +131,25 @@ export class StoriesComponent implements OnInit {
     );
   }
 
-  viewHtml(event ){ 
-    this.htmlView = this.story.MyStory;
+  editMyStoryService(id : number){
+    //console.log(id); 
+    
+    this.storyservice.editMyStory(id).subscribe(
+      (response : Story) => {
+         console.log(response); 
+         this.editForm = response;
+      },
+      (error) => { 
+        console.log(error); 
+      }
+    );
+  }
+
+  viewHtml(event ){
+    
+      this.htmlView = this.story.MyStory;
+    
+    
   }
 
   postMyStory(){
@@ -165,6 +182,35 @@ export class StoriesComponent implements OnInit {
           this.errorArray.push(error.error.error.UserId.errors[0].errorMessage);
         } */
          
+        console.log(this.errorArray);
+        this.loginError = this.errorArray;
+        
+      }
+    );
+  }
+
+  updateMyStory(){
+    console.log(this.editForm);
+    this.storyservice.updateThisStory(this.editForm).subscribe(
+      (response) => {
+        console.log("UPDATED");
+        document.getElementById("closeModalButton").click();
+        console.log(response);
+        this.getMyStoriesService(this.userLog.useridLog);
+      },
+      (error) => { 
+        console.log(error.error.error.Title.errors[0].errorMessage);
+        console.log(error.error.error);
+        var errorFinal = "";
+        this.errorArray = []; 
+
+        if(error.error.error.Title.errors[0].errorMessage){ 
+          this.errorArray.push(error.error.error.Title.errors[0].errorMessage);
+        }
+        if(error.error.error.MyStory.errors[0].errorMessage){ 
+          this.errorArray.push(error.error.error.MyStory.errors[0].errorMessage);
+        }
+       
         console.log(this.errorArray);
         this.loginError = this.errorArray;
         

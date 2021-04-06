@@ -1,16 +1,16 @@
  
 
-<div class="container"> 
+<div class="container "> 
     <div class="row">
         <div class="col-md-3">&nbsp;</div>
-        <div class="col-md-6">
+        <div class="col-md-6 padding-bottom">
             <div class="alert alert-success" *ngIf="thisMessage"> <a class="text-dark" routerLink="/login" > {{thisMessage}} </a></div>
             <div class="alert alert-danger" *ngIf="loginError">
                     <span class="text-danger"   *ngFor ="let er of loginError">{{er}} <br /></span>
             </div>
             
  
-                <form class="padding background-transparent" #newForm="ngForm" novalidate="novalidate" appAgeValidator *ngIf="!thisMessage">
+                <form class="padding background-transparent margin-bottom" #newForm="ngForm" novalidate="novalidate" appAgeValidator *ngIf="!thisMessage">
                         <div class="form-group">
                                 <label for="exampleInputEmail1">Full Name</label>
                                 <input type="text" class="form-control" [(ngModel)]="rvm.FullName" required   name="FullName" > 
@@ -36,7 +36,7 @@
                             <input type="password" class="form-control" required    [(ngModel)]="rvm.ConfirmPassword" name ="ConfirmPassword" >
                           </div> 
                         <button type="submit" class="btn btn-primary" (click)="onRegisterClick($event)" [disabled]="!rvm.Age || rvm.Age < 4">Submit</button>
-                    </form>
+               </form>
 
         </div>
         <div class="col-md-3">&nbsp;</div>

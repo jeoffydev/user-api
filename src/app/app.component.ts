@@ -20,7 +20,7 @@ export class AppComponent {
    */
  
  
-  constructor(public loginservice: LoginService, private router : Router, private titles: Title, private appservices : MainAppComponentService) {
+  constructor(public loginservice: LoginService, public router : Router, private titles: Title, private appservices : MainAppComponentService) {
    
     this.titles.setTitle('Kiwi Kids Stories'); 
     

@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-5">&nbsp;</div>
+        <div class="col-md-7 text-light text-left">
             <h1 class="intro">Hey Kids! <br />tell us your day today! :)</h1>
         </div>
     </div>
@@ -9,11 +10,11 @@
 
 <div class="container-fluid">
     <div class="row" *ngIf="AllStories">
-           
+            <div class="col-md-5">&nbsp;</div>
             <div class="col-md-7">
-                    <p *ngIf="userLog.usernameLog" ><input type="text" [(ngModel)]="searchStory" class="form-control searchform" placeholder="Search Stories"></p>
-                    <pagination-controls (pageChange)="p = $event"></pagination-controls>  
-                    <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories | filter:searchStory | paginate: { itemsPerPage: 20, currentPage: p }" >
+                    <p *ngIf="userLog.usernameLog" ><input type="text" [(ngModel)]="searchStory" class="form-control searchform" placeholder="Search all stories"></p>
+                    <pagination-controls   (pageChange)="p = $event"></pagination-controls>  
+                    <div class="alert alert-light background-transparent nobroder" role="alert"  *ngFor="let story of AllStories | filter:searchStory | paginate: { itemsPerPage: 12, currentPage: p }" >
                            
                             <svg style="display:none">
                                 <style>
@@ -43,7 +44,7 @@
                     <pagination-controls (pageChange)="p = $event"></pagination-controls>  
     
             </div>
-            <div class="col-md-5">&nbsp;</div>
+           
      </div>
         
 </div>

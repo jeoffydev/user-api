@@ -66,7 +66,7 @@
         </div>
        
         <div   [ngClass]="showEditor == true? 'displaynone' : 'col-md-8' "> 
-            <p *ngIf="userLog.usernameLog" ><input type="text" [(ngModel)]="searchStory" class="form-control searchform" placeholder="Search Stories"></p>
+            <p *ngIf="userLog.usernameLog" ><input type="text" [(ngModel)]="searchStory" class="form-control searchform" placeholder="Search my stories"></p>
             <pagination-controls (pageChange)="p = $event"></pagination-controls>  
             <div class="alert alert-light background-transparent-light nobroder"  *ngFor="let story of myStories | filter:searchStory | paginate: { itemsPerPage: 20, currentPage: p }" >
                 
@@ -76,6 +76,7 @@
                     </style>
                 </svg>
                 <div class="thisgooglefont" style='{{story.googleFont.importName}} ' >
+                    <span class="edit-my-story"    (click)="editMyStoryService(story.id) " data-toggle="modal" data-target="#editStoryModal"><i class="fa fa-edit"></i></span>
                     <h1 >{{story.title}}</h1>
                     <div [innerHTML]="story.myStory"></div>
                 </div>
@@ -89,3 +90,77 @@
     </div>
     
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editStoryModal" tabindex="-1" role="dialog" aria-labelledby="editStoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editStoryModalLabel">Edit Story</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+
+             
+
+           <form  *ngIf="editForm" >
+            <input type="hidden" class="form-control" id="InputUserId" [(ngModel)]="editForm.id"  name="Id"    > 
+            <div class="form-group">
+              <label for="InputTitle">Edit Title</label>
+              <input type="text"  class="form-control" id="InputTitle" [(ngModel)]="editForm.title"  name="Title"   > 
+            </div>
+            <div class="form-group">
+                <label for="InputTitle">Edit Content</label>
+                 
+                <angular-editor  [(ngModel)]="editForm.myStory"   name="MyStory"  ></angular-editor>
+
+            </div>
+
+            <div class="form-group">
+                <label for="InputTitle">Edit Font Style</label> 
+                <select [(ngModel)]="editForm.googleFontsId"  (change)="getFont(editForm.googleFontsId)"   name="GoogleFont" class="form-control" >
+                    <option [ngValue]="0" selected>--Choose font--</option>
+                    <option  *ngFor ="let gf of googlefontSelect" [ngValue]="gf.id" > {{gf.importName}}</option>
+                </select>
+              </div>
+             
+            <button type="submit" class="btn btn-primary" [disabled]="!editForm.title || !editForm.id || !editForm.myStory" (click)="updateMyStory($event)">Update</button>
+          </form>
+
+          
+          <!--<div class="margin-top"  *ngIf="editForm" >
+                <span class="cursorpoint btn btn-small btn-dark" (click)="getFont(editForm.googleFontsId)">Click for preview <i class="fa  fa-eye"></i></span>
+                <hr />
+                <div class="margin-top"  [hidden] = "!fontFamily">
+                    <h4 >Preview:   </h4>
+
+                    <svg style="display:none">
+                        <style>
+                            @import url('{{fontEmbed}}');
+                        </style>
+                    </svg>
+                    
+                    <div class="googleFont" style='{{fontFamily}} '>
+                        <h1>{{editForm.title}}</h1>
+                        <div [innerHTML]="htmlView"></div>
+                    </div>
+                </div>
+               
+          </div>-->
+           
+ 
+
+
+
+        </div>
+        <div class="modal-footer">
+          
+            <button type="button" id="closeModalButton" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

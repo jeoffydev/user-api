@@ -8,12 +8,14 @@ import { CanActivateGuardService } from './can-activate-guard.service';
 import { CanActivateLoginService } from './can-activate-login.service';
 import { CanActivateRegisterService } from './can-activate-register.service';
 import { CanActivateHomeService } from './can-activate-home.service';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   {path: "", component : HomepageComponent  },
   {path: "register", component : RegisterComponent  },
   {path: "login", component : LoginComponent  },
-  {path: "my-stories", component : StoriesComponent, canActivate: [CanActivateGuardService]}
+  {path: "my-stories", component : StoriesComponent, canActivate: [CanActivateGuardService]},
+  {path: "about-us", component : AboutUsComponent },
 ];
 
 @NgModule({

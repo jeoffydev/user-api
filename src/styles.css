@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&family=Thasadith:wght@700&family=Ultra&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight&display=swap');
 body{
     font-family: 'Shippori Mincho B1', serif;
     color:#37393b !important;
     background-color: #EDD8C4 !important;
   
-    background: url("assets/background.png") no-repeat center center fixed; 
+    background: url("assets/main.jpg") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -16,8 +16,9 @@ a{
     color:#CA5948 !important;
 }
 .logo{
-    font-family: 'Thasadith', sans-serif;
+    font-family: 'Zilla Slab Highlight', cursive;
     color: #fff!important;
+    font-size: 1.4rem   !important;
 }
 .intro{
     font-family: 'Ultra', serif;
@@ -48,10 +49,10 @@ a{
   
 }
 .background-transparent{
-    background-color: rgba(255, 255, 255, 0.822) !important; 
+    background-color: rgba(255, 255, 255, 0.9) !important; 
 }
 .background-transparent-light{
-    background-color: rgba(255, 255, 255, 0.8) !important; 
+    background-color: rgba(255, 255, 255, 0.9) !important; 
 }
 .margin-left {
     margin-left: 10px;
@@ -134,4 +135,65 @@ ul.list-loved li{
     list-style-type: none;
     padding: 0px;
 
+}
+.edit-my-story{
+    position: absolute;
+    right:-5px;
+    top: -5px;
+    
+    padding:5px 10px 3px;
+    cursor: pointer;
+    border-radius: 35%;
+    background-color: #CA5948;
+}
+.edit-my-story i{
+    font-size: 18px;
+    color: #fff;
+}
+
+#editStoryModal .modal-dialog {
+    max-width: 800px; 
+}
+.cursorpoint{
+    cursor: pointer;
+}
+
+.body-wrapper.about{
+     
+    background: url("assets/about.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+.margin-bottom{
+    margin-bottom: 20px;
+}
+.padding-bottom{
+    padding-bottom: 20px;
+}
+.body-wrapper.stories{
+     
+    background: url("assets/write.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+.body-wrapper.login, .body-wrapper.register{
+    min-height: 680px;
+    height: 100vh;
+    background: url("assets/login-register.jpg") no-repeat center center fixed; 
+    
+}
+ 
+.body-wrapper.login, .body-wrapper.register{
+      
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
 }

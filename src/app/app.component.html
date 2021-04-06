@@ -12,6 +12,9 @@
         <a class="nav-link" routerLink="/">Home </a>
       </li> 
       <li [routerLinkActive]="'is-active'" class="nav-item">
+        <a class="nav-link" routerLink="/about-us"  >About us</a>
+      </li>
+      <li [routerLinkActive]="'is-active'" class="nav-item">
         <a class="nav-link" routerLink="/login" *ngIf="!userLog.usernameLog">Login</a>
       </li>  
       <li [routerLinkActive]="'is-active'" class="nav-item">
@@ -32,6 +35,6 @@
 </nav>
 <!--<h2 *ngIf="loginservice.thisUsername">{{loginservice.thisUsername}} / >{{loginservice.thisUsernameId}}</h2>-->
 
-<div class="body-wrapper">
+<div class="body-wrapper" [ngClass]="router.url === '/about-us'? 'about' : '' || router.url === '/my-stories'? 'stories': ''  || router.url === '/login'? 'login': '' || router.url === '/register'? 'register': ''">
     <router-outlet></router-outlet>
 </div>

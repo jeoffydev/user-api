@@ -36,6 +36,13 @@ export class StoryService {
       return this.httpclient.get<Story[]>(this.thisApiUrl + "/api/stories/" + userid, {  responseType : "json"});
    }
 
+  editMyStory(id : number) :Observable<Story>{ 
+    return this.httpclient.get<Story>(this.thisApiUrl + "/api/editstory/" + id, {  responseType : "json"});
+  }
+
+  updateThisStory(story: Story) : Observable<any>{
+    return this.httpclient.post<any>(this.thisApiUrl + "/api/editstory", story, {  responseType : "json"});
+  }
 
    writeMyStory(story: Story) : Observable<any>{
       return this.httpclient.post<any>(this.thisApiUrl + "/api/stories", story, {  responseType : "json"});

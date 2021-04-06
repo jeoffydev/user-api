@@ -16,6 +16,7 @@ import { AgeValidatorDirective } from './age-validator.directive';
 import { AngularEditorModule } from '@kolkov/angular-editor'; 
 import {NgxPaginationModule} from 'ngx-pagination'; 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     RegisterComponent,
     StoriesComponent,
     HomepageComponent,
-    AgeValidatorDirective
+    AgeValidatorDirective,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
